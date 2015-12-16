@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.contactpush.androidzippers.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.contactpush.androidzippers.com" xmlns:intf="http://service.contactpush.androidzippers.com" xmlns:tns1="http://bean.contactpush.androidzippers.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.contactpush.androidzippers.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.contactpush.androidzippers.com"/>
+   <element name="signUp">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="phone" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUpResponse">
+    <complexType>
+     <sequence>
+      <element name="signUpReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logIn">
+    <complexType>
+     <sequence>
+      <element name="phone" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logInResponse">
+    <complexType>
+     <sequence>
+      <element name="logInReturn" type="tns1:ContactPushUser"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.contactpush.androidzippers.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="ContactPushUser">
+    <sequence>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="phone" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="logInRequest">
+
+      <wsdl:part element="impl:logIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="logInResponse">
+
+      <wsdl:part element="impl:logInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpResponse">
+
+      <wsdl:part element="impl:signUpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpRequest">
+
+      <wsdl:part element="impl:signUp" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ContactPushService">
+
+      <wsdl:operation name="signUp">
+
+         <wsdl:input message="impl:signUpRequest" name="signUpRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signUpResponse" name="signUpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logIn">
+
+         <wsdl:input message="impl:logInRequest" name="logInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:logInResponse" name="logInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ContactPushServiceSoapBinding" type="impl:ContactPushService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="signUp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signUpRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signUpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="logInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="logInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ContactPushServiceService">
+
+      <wsdl:port binding="impl:ContactPushServiceSoapBinding" name="ContactPushService">
+
+         <wsdlsoap:address location="http://localhost:8080/Contact_Push_Web_Service/services/ContactPushService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
